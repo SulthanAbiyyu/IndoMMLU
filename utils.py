@@ -13,7 +13,7 @@ def softmax(x):
 
 @torch.no_grad()
 def get_logprobs_causal(model, tokenizer, prompt, device):
-    inputs = tokenizer(prompt, return_tensors="pt")
+    inputs = tokenizer(prompt, return_tensors="pt").to(device)
     if model.config.model_type == 'falcon':
         inputs.pop("token_type_ids")
     input_ids, output_ids = inputs["input_ids"].to(device), inputs["input_ids"][:, 1:].to(device)
