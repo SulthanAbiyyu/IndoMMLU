@@ -69,7 +69,7 @@ def main():
     tokenizer_class = LlamaTokenizer if 'llama' in args.base_model else AutoTokenizer
     model_class = LlamaForCausalLM if 'llama' in args.base_model else AutoModelForCausalLM
 
-    SAVE_FILE = '{args.output_folder}/result_{args.base_model.split("/")[-1]}_{args.by_letter}.csv'
+    SAVE_FILE = f'{args.output_folder}/result_{args.base_model.split("/")[-1]}_{args.by_letter}.csv'
     tokenizer = tokenizer_class.from_pretrained(args.base_model)
     
     if 'mt0' in args.base_model:
